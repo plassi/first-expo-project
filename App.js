@@ -4,6 +4,7 @@ import logo from './assets/logo.png';
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
+import Button from './components/Button'
 
 export default function App() {
 
@@ -32,6 +33,10 @@ export default function App() {
     setSelectedImage({ localUri: pickerResult.uri });
   };
 
+  let clearImagePicker = () => {
+    setSelectedImage(null)
+  }
+
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
       alert(`The image is available for sharing at: ${selectedImage.remoteUri}`);
@@ -48,9 +53,8 @@ export default function App() {
           source={{ uri: selectedImage.localUri }}
           style={styles.thumbnail}
         />
-        <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
-          <Text style={styles.buttonText}>Share this photo</Text>
-        </TouchableOpacity>
+        <Button onPress={openShareDialogAsync} text="Share this photo" />
+        <Button onPress={clearImagePicker} text="Clear selection" />
       </View>
     );
   }
@@ -63,12 +67,7 @@ export default function App() {
         To share a photo from your phone with a friend, just press the button below!
       </Text>
 
-      <TouchableOpacity
-        onPress={openImagePickerAsync}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Pick a photo</Text>
-      </TouchableOpacity>
+      <Button onPress={openImagePickerAsync} text="Pick a photo" />
     </View>
   );
 }

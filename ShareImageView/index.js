@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, View } from 'react-native';
 import * as Sharing from 'expo-sharing';
 import Button from '../components/Button'
 
@@ -18,29 +18,24 @@ export const ShareImageView = ({ selectedImage, setSelectedImage }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={{
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
       <Image
         source={{ uri: selectedImage.localUri }}
-        style={styles.thumbnail}
+        style={{
+          width: 300,
+          height: 300,
+          resizeMode: "contain"
+        }}
       />
       <Button onPress={openShareDialogAsync} text="Share this photo" />
       <Button onPress={clearImagePicker} text="Clear selection" />
     </View>
   )
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  thumbnail: {
-    width: 300,
-    height: 300,
-    resizeMode: "contain"
-  },
-});
 
 export default ShareImageView;

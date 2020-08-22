@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Platform, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, Text, View } from 'react-native';
 import logo from '../assets/logo.png';
 import * as ImagePicker from 'expo-image-picker';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
@@ -31,10 +31,23 @@ const SelectImageView = ({ setSelectedImage }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={logo} style={styles.logo} />
+    <View style={{
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <Image source={logo} style={{
+        width: 305,
+        height: 150,
+        marginBottom: 10
+      }} />
 
-      <Text style={styles.instructions}>
+      <Text style={{
+        color: '#888',
+        fontSize: 18,
+        marginHorizontal: 15
+      }}>
         To share a photo from your phone with a friend, just press the button below!
       </Text>
 
@@ -42,24 +55,5 @@ const SelectImageView = ({ setSelectedImage }) => {
     </View>
   )
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logo: {
-    width: 305,
-    height: 150,
-    marginBottom: 10,
-  },
-  instructions: {
-    color: '#888',
-    fontSize: 18,
-    marginHorizontal: 15,
-  }
-});
 
 export default SelectImageView;

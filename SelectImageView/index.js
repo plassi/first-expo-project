@@ -35,23 +35,28 @@ const SelectImageView = ({ setSelectedImage }) => {
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }}>
-      <Image source={logo} style={{
-        width: 305,
-        height: 150,
-        marginBottom: 10
-      }} />
+      <View style={{ alignItems: "center" }}>
+        <Text style={{ fontSize: 35 }}>
+          Image Share
+        </Text>
+        <Text style={{ fontSize: 120 }}>
+          🌄
+        </Text>
+      </View>
 
-      <Text style={{
-        color: '#888',
-        fontSize: 18,
-        marginHorizontal: 15
-      }}>
-        To share a photo from your phone with a friend, just press the button below!
+      <View style={{ alignItems: "center"}}>
+        <Text style={{
+          color: '#888',
+          fontSize: 18,
+          marginHorizontal: 15
+        }}>
+          To share a photo from your phone with a friend, just press the button below!
       </Text>
+        <Button onPress={openImagePickerAsync} text="Pick a photo" />
+      </View>
 
-      <Button onPress={openImagePickerAsync} text="Pick a photo" />
     </View>
   )
 };
